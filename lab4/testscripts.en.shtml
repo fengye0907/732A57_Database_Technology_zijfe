@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+<!-- #set var="headImage"     value="/mall11/images/header-overlay-idalogo.png" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- #set var="courseHomePageHeading2" value="For $courseProgrammes ($coursePeriod)" -->
+
+
+
+
+
+
+<!-- #set var="pageCSS"                value="/edu/ugrad/include/cindex.css" -->
+
+
+
+<!-- This documents contains a block of HTML to be included in the course-specific Web page. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+<!-- LiU-mall --> 
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+    <meta content='IE=EDGE' http-equiv='X-UA-Compatible'>
+    <title>TDDD37 &gt; Testscripts</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="apple-touch-icon" href="/apple-touch-icon-114x114.png"/>
+
+    <meta name="dcterms.title" content="TDDD37 &gt; Testscripts"/>
+    <meta name="dcterms.creator" content="Olaf Hartig"/>
+    <meta name="dcterms.format" content="text/html"/>
+    <meta name="dcterms.language" content="en" />
+    <meta name="dcterms.publisher" content="Linköping University"/>
+    <meta name="dcterms.date" content="2016-10-05"/>
+    <meta name="dcterms.modified" content="2016-10-05"/>
+
+
+    <meta name="viewport" id="viewport" content="width=device-width, user-scalable=yes,initial-scale=1.0"/>
+
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="Thu Jan 1 01:00:00 1970"/>
+
+    <link rel="stylesheet" href="https://www.ida.liu.se/mall11/css/content.css" type="text/css"/>
+    <link rel="stylesheet" href="https://www.ida.liu.se/mall11/css/screen.css" media="screen" type="text/css"/>
+    <!--[if IE 6]><link rel="stylesheet" href="https://www.ida.liu.se/mall11/css/ie6.css" media="screen" type="text/css"/><![endif]-->
+    <link rel="stylesheet" href="https://www.ida.liu.se/mall11/css/print.css" media="print" type="text/css"/>
+    <link rel="stylesheet" href="https://www.ida.liu.se/mall11/css/mobile.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/mall11/css/ida.css"/>
+
+    <link rel="alternate" href="http://www.liu.se/liu-nytt/arkiv/nyhetsarkiv?l=sv&amp;format=rss" type="application/rss+xml" title="LiU-nytt" />
+    <link rel="alternate" href="http://www.liu.se/liu-nytt/arkiv/nyhetsarkiv?l=en&amp;format=rss" type="application/rss+xml" title="LiU-news" />
+    <link rel="alternate" href="http://www.liu.se/liu-nytt/pressmed/arkiv?format=rss" type="application/rss+xml" title="Pressmeddelanden"/>
+    <link rel="alternate" href="http://www.liu.se/rss/liu-jobs-sv.rss" type="application/rss+xml" title="Lediga jobb"/>
+    <link rel="alternate" href="http://www.liu.se/rss/liu-jobs-en.rss" type="application/rss+xml" title="Vacancies"/>
+
+    <script type="text/javascript" src="https://www.ida.liu.se/mall11/script/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.ida.liu.se/mall11/script/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="https://www.ida.liu.se/mall11/script/mobile.js"></script>
+
+  </head>
+  <body class="full">
+
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M3QRGB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M3QRGB');</script>
+  <!-- End Google Tag Manager -->
+
+    <div id="head">
+      
+      <div id="head-top">&nbsp;</div>
+      <div id="head-content"><div class="head-width-limit">
+        <div id="head-lang">
+	  <a title="Swedish web site" href="/index.sv.shtml"><img src="/mall11/images/flag-sv.png" alt="" width="17" height="10"/>Swedish web site</a>
+	</div>
+        <div id="head-search">
+          <form action="https://www.ida.liu.se//bin/search_redirect.pl" method="post">
+	    <p>
+	      <input id="search-string" accesskey="4" name="q" size="12" title="Enter search string" placeholder="Search"/>
+	      <select id="search-source" name="site" title="Select search area">
+	        
+		<option value="ida">Search IDA.LiU.se</option>
+		<option value="idaempl">Find IDA employee</option>
+		<option value="idamap">Find IDA room</option>
+		<option value="liu">Search LiU.se</option>
+		<option value="liuempl">Find LiU employee</option>
+	      </select>
+              <input type="hidden" name="hl" value="en"/>
+	      <input id="search-submit" type="submit" value="Search" title="Search"/>
+	    </p>
+	  </form>
+          <div id="search-other">
+<!--
+	    <a href="http://www.liu.se/search/sitemap?l=en" accesskey="3">Site map</a> |
+-->
+            <a href="/A-Z/index.en.shtml">A &#151; Z</a>
+          </div>
+        </div>
+        <div id="logo">
+          <a href="http://www.liu.se/?l=sv" accesskey="1">
+          
+          <img class="screen" src="https://www.ida.liu.se/mall11/images/logo-sv.png" alt="Logotyp"/>
+          
+          <img class="handheld" alt="Sigill" src="https://www.ida.liu.se/mall11/images/sigill.png" width="0" height="0"/>
+          </a>
+          <img class="print" alt="Logotyp" src="https://www.ida.liu.se/mall11/images/logo-print.png" width="0" height="0"/>
+        </div>
+        <div id="head-text"><h1>IDA - Department of Computer and Information Science</h1></div>
+      </div></div>
+      <div id="head-bottom">
+        <div id="navbar">
+	  <a href='http://www.liu.se/?l=en'>LiU</a> &#9654; <a href='/index.en.shtml'>IDA</a> &#9654; <a href='/edu/ugrad/index.en.shtml'>Undergraduate</a> &#9654; <a href='/edu/ugrad/courses/index.en.shtml'>Courses</a><a href="/">   </a> &#9654; 
+<a href="/~TDDD37/index.en.shtml"> TDDD37 </a> &#9654; 
+<a href="/~TDDD37/labs/"> Labs </a> &#9654; 
+ Testscripts
+	</div>
+	<div id="page-lang">
+           
+	</div>
+	<div id="head-bottom-end"></div>
+      </div>
+    </div>
+    <div id="middle">
+
+      <div class="handheld" id="hidemenu" onmouseover="">Hide menu</div>
+      <div id="menu">
+        <div class="handheld" id="showmenu" onmouseover="">Display menu</div>
+        <ul>
+  
+  <li class='menu_heading_first'><a href="/~TDDD37/index.en.shtml">TDDD37 (2019)</a></li>
+  <li><a href="/~TDDD37/info/courseinfo.en.shtml">Course Information</a></li>
+  <li><a href="/~TDDD37/info/syllabus.en.shtml">Syllabus</a></li>
+  <li><a href="/~TDDD37/exam/index.en.shtml">Examination</a></li>
+  <li><a href="https://cloud.timeedit.net/liu/web/schema/ri1X50gQ0560YvQQ86Z9675Y0Zy4007555Y69Q075.html">Timetable</a></li>
+  <li><a href="/~TDDD37/fo/index.en.shtml">Lectures</a></li>
+  <li><a href="/~TDDD37/labs/index.en.shtml">Labs</a></li>
+  <li><a href="/~TDDD37/info/messages.en.shtml">All Messages</a></li>
+  <li><a href="/~TDDD37/contact/index.en.shtml">Contact</a></li>
+
+  
+  
+  
+  
+  
+  
+  <li class='empty'>&nbsp;</li>
+<li class='menu_heading'>Internal</li>
+  <li><a href="/local/ida/index.en.shtml">IDA internal</a></li>
+  <li><a href="/students/index.en.shtml">Student Pages</a></li>
+  <li><a href="/department/emergency/index.en.shtml">Emergency</a></li>
+
+  
+        </ul>
+      </div>
+      <div id="content">
+
+	<div class="text">
+
+<!-- CONTENT -->
+
+
+<h1 align="center"> TDDD37 Database Technology </h1>
+<h3 align="center"> Testscripts </h3>
+
+
+<p>This page contain the test scripts for your BryanAir database project. Each script contains a set of MySQL queries 
+and is intended to help you check that your implementation is correct.  
+In each script a scenario is created whereafter it is checked that your stored procedures gives the right output given 
+some input for that scenario. 
+That the output is (somewhat) corresponding to the expected output has to be checked manually and for each test-setup 
+the expected answer is first printed, followed by what your procedure outputs. To better understand the tests and what
+each test is testing, please read the scripts themselves.
+</p>
+
+<p> We have included test scripts for questions 3, 6, 7 and 10. Each script is called similarly as when you created your 
+Johnson Brothers database in Labs 1 and 2&nbsp;(i.e., by calling the script with the command <i>SOURCE script_file_name</i>).
+<b>Note that you will have to reset your database between each script called, either by deleting all data in your tables, or by deleting all tables and then recreate them.</b>
+</p>
+
+<ul>
+<li><a href="/~TDDD37/labs/Question3.sql">Script for question 3</a>.
+<li><a href="/~TDDD37/labs/Question6.sql">Script for question 6</a>.
+<li><a href="/~TDDD37/labs/Question7.sql">Script for question 7</a> (note that this script must be run on the university setup database account to work properly).
+<li><a href="/~TDDD37/labs/Question10FillWithFlights.sql">Scenario-setup script for question 10</a> (to be run in only one of the terminals).
+<li><a href="/~TDDD37/labs/Question10MakeBooking.sql">Make-booking script for question 10</a> (to be run in both terminals simultaneously after the scenario has been set up).
+</ul>
+
+<p>
+If you find some error in one of the scripts, please let <a href="mailto:olaf.hartig@liu.se?Subject=TDDD37_Script_error">us</a> know and we will fix the script as soon as possible.
+</p>
+
+
+	  <br class="cleaner"/>
+	  <p class="content-responsible">
+            Page responsible: <a title="Email Olaf Hartig (olaf.hartig@liu.se)" href="mailto:olaf.hartig@liu.se?subject=https://www.ida.liu.se/~TDDD37/labs/testscripts.en.shtml">Olaf Hartig</a><br />
+ Last updated: 2016-10-05
+	  </p>
+	</div>
+      </div>
+      <br class="cleaner"/>
+    </div>
+    <div id="foot"><div class="foot-width-limit">
+      <div id="foot-content">
+	<div class="foot-column">
+          <div class="text">
+            <p><strong>Department of Computer and Information Science</strong><br/>
+            Linköping University<br/>
+            581&nbsp;83 LINKÖPING<br/>
+	    Tel: +46&nbsp;13&nbsp;28&nbsp;10&nbsp;00<br/>
+	    </p>
+            <p>
+              <a href="/department/contact/index.en.shtml" title="Contact IDA">Contact IDA</a> |
+	      <a href="/department/location/index.en.shtml" title="Maps">Maps</a>
+            </p>
+          </div>
+        </div>
+        <div class="foot-column">
+          <div class="text">
+            <p>
+              <strong>LiU organization</strong>
+            </p>
+            <ul>
+              <li><a href="https://liu.se/en/about-liu">About LiU</a></li>
+            </ul>
+            <ul>
+              <li><a href="https://www.filfak.liu.se/?l=en">Arts &amp; Sciences</a></li>
+              <li><a href="https://www.liu.se/uv?l=en">Educational Sciences</a></li>
+              <li><a href="https://www.hu.liu.se/?l=en">Health Sciences</a></li>
+              <li><a href="https://www.lith.liu.se/?l=en">Science and Engineering</a></li>
+            </ul>
+            <ul>
+              <li><a href="https://insidan.liu.se/organisation/institutioner?l=en">Departments</a></li>
+              <li><a href="https://insidan.liu.se/organisation/uf?l=en">Offices &amp; Administration</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-column">
+          <div class="text">
+            <p><strong>At LiU</strong></p>
+            <ul>
+              <li><a href="https://liu.se/en/education" title="Education">Education</a></li>
+              <li><a href="https://liu.se/en/research" title="Research">Research</a></li>
+              <li><a href="https://liu.se/en/collaboration" title="Collaboration">Collaboration</a></li>
+            </ul>
+            <ul>
+              <li><a href="https://www.student.liu.se/?l=en" title="LiU Students">LiU Students</a></li>
+              <li><a href="https://old.liu.se/insidan?l=en" title="LiU Employees">LiU Employees</a></li>
+              <li><a href="https://liu.se/en/alumni" title="LiU Alumni">LiU Alumni</a></li>
+            </ul>
+            <ul>
+              <li><a href="https://liu.se/en/library" title="Library">Library</a></li>
+              <li><a href="https://liu.se/en/work-at-liu" title="Vacancies">Vacancies</a></li>
+              <li><a href="https://liu.se/en/news/press-contacts" title="Press Room">Press Room</a></li>
+              <li><a href="https://www.ep.liu.se/index.en.asp" title="LiU Electronic Press">LiU Electronic Press</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-column">
+          <div class="text">
+            <p><strong>At IDA</strong></p>
+            <ul>
+              <li><a href="/edu/ugrad/index.en.shtml">Undergraduate studies</a></li>
+              <li><a href="/edu/ugrad/thesis/index.en.shtml">Final Thesis</a></li>
+              <li><a href="/edu/grad/index.en.shtml">Doctoral studies</a></li>
+              <li><a href="/research/index.en.shtml">Research</a></li>
+              <li><a href="/department/org/index.en.shtml">Organization</a></li>
+              <li><a href="/local/ida/index.en.shtml">Internal</a></li>
+              <li><a href="/department/emergency/index.en.shtml">Emergency</a></li>
+            </ul>
+          </div>
+        </div>
+	<div id="foot-content-end"></div>
+      </div>
+      <div id="page-icons">
+	<script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js?pub=xa-4a437c18540088bc"></script>
+	<div class="addthis_toolbox addthis_default_style">
+	  <a class="addthis_button_facebook"></a>
+	  <a class="addthis_button_twitter"></a>
+	  <a class="addthis_button_email"></a>
+	  <span class="addthis_separator">&nbsp;</span>
+	  <a class="addthis_button_compact">Share</a>
+	  <span class="addthis_separator">&nbsp;</span>
+	  <a href="#">Top of page <img src="/mall11/images/till_toppen.png" alt="Top of page"/></a>
+	</div>
+	<script type="text/javascript">
+	  var addthis_config = {
+	    username: "liuweb",
+	    ui_language: "en",
+	    data_use_flash: false,
+	    data_use_cookies: false
+	  };
+	  var addthis_share = {
+	    templates: {
+	      twitter: "{{title}}: {{url}} #LiU"
+	    },
+            url: "https://www.ida.liu.se/~TDDD37/labs/testscripts.en.shtml",
+            title: "Testscripts"
+	  };
+	</script>
+      </div>
+      <br>
+    </div></div>
+    <script type="text/javascript">
+     var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2538626-1']);
+      _gaq.push(['_setDomainName', '.liu.se']);
+      _gaq.push(['_addIgnoredRef', 'liu.se']);
+      _gaq.push(['_gat._anonymizeIp']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
+
+

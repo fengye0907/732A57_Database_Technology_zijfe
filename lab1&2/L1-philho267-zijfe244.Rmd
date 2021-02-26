@@ -1,0 +1,255 @@
+---
+title: "lab1 BDA"
+author: "Zijie Feng & Phillp Holscher"
+date: "2019-03-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+rm(list=ls())
+knitr::opts_chunk$set(echo = TRUE,max.print=50)
+# install.packages("RMySQL")
+library(DBI)
+
+# MySQL server 8 use another plugin, here we use server 5.7 with
+# mysql_native_password to login easily.
+# mysql -u username -p --default-character-set=utf8 database
+# mysql> SOURCE dump_file.sql
+```
+
+## 0) Setup the environment for database
+
+```{r}
+db <-dbConnect(RMySQL::MySQL(),host="localhost",
+               dbname="jb",user="root",password="12345")
+
+# db <-dbConnect(RMySQL::MySQL(),host="mariadb.edu.liu.se",
+#                dbname="zijfe244",user="zijfe244",password="KYBAwFrp")
+```
+
+```{sql connection=db}
+show tables;
+```
+
+
+## 1) List all employees, i.e. all tuples in the jbemployee relation.
+
+```{sql, connection=db}
+select * from jbemployee;
+```
+
+## 2) List the name of all departments in alphabetical order. Note: by “name” we mean the name attribute for all tuples in the jbdept relation.
+
+```{sql connection=db}
+select name from jbdept order by name;
+```
+
+## 3) What parts are not in store, i.e. qoh = 0? (qoh = Quantity On Hand)
+
+```{sql connection=db}
+select name from jbparts where qoh=0;
+```
+
+
+## 4) Which employees have a salary between 9000 (included) and 10000 (included)?
+
+```{sql connection=db}
+select name from jbemployee where salary between 9000 and 10000;
+```
+
+## 5) What was the age of each employee when they started working (startyear)?
+
+```{sql connection=db}
+select name, (startyear-birthyear) as age_started from jbemployee;
+```
+
+
+## 6) Which employees have a last name ending with “son”?
+
+```{sql connection=db}
+select id,name from jbemployee where name like '%son,%';
+```
+
+## 7) Which items (note items, not parts) have been delivered by a supplier called Fisher-Price? Formulate this query using a subquery in the where-clause.
+
+```{sql connection=db}
+select name from jbitem where supplier =
+(select id from jbsupplier where name='Fisher-Price');
+```
+
+## 8) Formulate the same query as above, but without a subquery.
+
+```{sql connection=db}
+select I.name, S.name from jbitem I, jbsupplier S 
+where S.name='Fisher-Price' and S.id=I.supplier;
+```
+
+## 9) Show all cities that have suppliers located in them. Formulate this query using a subquery in the where-clause.
+
+```{sql connection=db}
+select DISTINCT(name) from jbcity
+where id in (select city from jbsupplier);
+```
+
+## 10) What is the name and color of the parts that are heavier than a card reader? Formulate this query using a subquery in the where-clause. (The SQL query must not contain the weight as a constant.)
+
+```{sql connection=db}
+select name, color from jbparts 
+where weight > (select weight from jbparts where name='card reader');
+```
+
+## 11) Formulate the same query as above, but without a subquery. (The query must not contain the weight as a constant.)
+
+```{sql connection=db}
+select p.name,p.color from jbparts p, jbparts b 
+where p.weight>b.weight and b.name='card reader';
+```
+
+## 12) What is the average weight of black parts?
+
+```{sql connection=db}
+select avg(weight) from jbparts where color='black';
+```
+
+## 13)What is the total weight of all parts that each supplier in Massachusetts (“Mass”) has delivered? Retrieve the name and the total weight for each of these suppliers. Do not forget to take the quantity of delivered parts into account. Note that one row should be returned for each supplier.
+
+```{sql connection=db}
+select s.name, sum(p.weight*d.quan)  from jbsupplier s,jbparts p,jbsupply d, jbcity c  
+where p.id=d.part  and d.supplier=s.id  and s.city=c.id  and c.state='mass' Group by s.name;
+```
+
+## 14) Create a new relation (a table), with the same attributes as the table items using the CREATE TABLE syntax where you define every attribute explicitly (i.e. not as a copy of another table). Then fill the table with all items that cost less than the average price for items. Remember to define primary and foreign keys in your table!
+
+```{sql connection=db}
+# create an empty table with headers
+create table jbinfo (id integer primary key, name varchar(25),
+dept integer ,price integer , qoh integer , supplier integer );
+```
+
+```{sql connection=db}
+insert into jbinfo (id, name, dept, price, qoh, supplier) 
+select id, name, dept, price, qoh, supplier from jbitem 
+where price<all (select avg(price) from jbitem);
+```
+
+```{sql connection=db}
+select * from jbinfo;
+```
+
+
+```{sql connection=db}
+drop table jbinfo;
+```
+
+## 15) Create a view that contains the items that cost less than the average price for items.
+
+```{sql connection=db}
+# or `create view item_view as select * from jbinfo`
+
+create view item_view as
+select * from jbitem 
+where price < (select avg(price) from jbitem);
+```
+
+```{sql connection=db}
+select * from item_view;
+```
+
+```{sql connection=db}
+drop view item_view;
+```
+
+## 16) What is the difference between a table and a view? One is static and the other is dynamic. Which is which and what do we mean by static respectively dynamic?
+
+Table is static, and view is dynamic and a vitual table derived from other tables or views. The static here means that some data are stored in such table actually, not just logistic `select` statement.
+
+## 17) Create a view, using only the implicit join notation, i.e. only use where statements but no inner join, right join or left join statements, that calculates the total cost of each debit, by considering price and quantity of each bought item. (To be used for charging customer accounts). The view should contain the sale identifier (debit) and total cost.
+
+```{sql connection=db}
+create view debit_view as
+select D.id, sum(I.price*S.quantity) as total_cost 
+from jbdebit D, jbitem I, jbsale S
+where I.id = S.item and D.id = S.debit group by S.debit;
+```
+
+```{sql connection=db}
+select * from debit_view
+```
+
+## 18) Do the same as in (17), using only the explicit join notation, i.e. using only left, right or inner joins but no where statement. Motivate why you use the join you do (left, right or inner), and why this is the correct one (unlike the others).
+
+```{sql connection=db}
+select D.id, sum(I.price*S.quantity) as total_cost
+from (jbsale S left join jbdebit D on S.debit = D.id 
+left join jbitem I on S.item = I.id) group by S.debit
+```
+
+```{sql connection=db}
+drop view debit_view
+```
+
+## 19) Oh no! An earthquake!
+
+- a) Remove all suppliers in Los Angeles from the table jbsupplier. This will not work right away (you will receive error code 23000) which you will have to solve by deleting some other related tuples. However, do not delete more tuples from other tables than necessary and do not change the structure of the tables, i.e. do not remove foreign keys. Also, remember that you are only allowed to use “Los Angeles” as a constant in your queries, not “199” or “900”.
+
+```{sql connection=db}
+# show keys from jbsupplier;
+select TABLE_NAME,COLUMN_NAME,CONSTRAINT_NAME,REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME
+from information_schema.KEY_COLUMN_USAGE where REFERENCED_TABLE_NAME='jbcity';
+```
+
+```{sql connection=db}
+delete jbsale
+from jbsale
+right join jbitem on jbitem.id=jbsale.item
+left join jbsupplier on jbsupplier.id=jbitem.supplier
+left join jbcity on jbcity.id=jbsupplier.city
+where jbcity.name='Los Angeles';
+```
+
+```{sql connection=db}
+delete jbitem
+from jbitem
+left join jbsupplier on jbsupplier.id=jbitem.supplier
+left join jbcity on jbcity.id=jbsupplier.city
+where jbcity.name='Los Angeles';
+```
+
+```{sql connection=db}
+delete jbsupplier
+from jbsupplier
+left join jbcity on jbcity.id=jbsupplier.city
+where jbcity.name='Los Angeles';
+```
+
+```{sql connection=db}
+select * from jbsupplier;
+```
+
+- b) Explain what you did and why.
+
+The *id* in jbitem is the foreign key of jbsale (item), and the *id* in jbsupplier is the foreign key of jbitem (supplier). If we want to delete the tuples in jbsupplier, we do have to remove all the correlated tuples firstly.
+
+## 20) An employee has tried to find out which suppliers that have delivered items that have been sold. He has created a view and a query that shows the number of items sold from a supplier.
+
+```{sql connection=db}
+CREATE VIEW jbsale_supply(supplier, item, quantity) AS
+SELECT jbsupplier.name, jbitem.name, jbsale.quantity
+FROM jbsale
+right join jbitem on jbitem.id=jbsale.item
+inner join jbsupplier on jbsupplier.id = jbitem.supplier
+```
+
+```{sql connection=db}
+SELECT supplier, sum(quantity) AS sum FROM jbsale_supply
+GROUP BY supplier;
+```
+
+```{sql connection=db}
+drop view jbsale_supply
+```
+
+
+
+
+
